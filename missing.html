@@ -1126,6 +1126,7 @@
 
                 $('#printIcon').off('click');
                 $('#printIcon').on('click', function(){
+                    $('nav').hide();
                       $('#printIcon').hide();
                       r= $('.content').clone();
                        $('.rm-wrapper').hide()
@@ -1667,6 +1668,16 @@ allDataArr = {'userId':userId, 'fbId':fbId};
 
     })
 
+                    //update progress bars
+                       $('.progress').each(function(index){
+
+                      
+                        theId =$(this).attr('id');
+                        theVal = userDataArr[theId];
+                         $(this).css('width', theVal);
+
+                })
+
 
 
             }});
@@ -1746,7 +1757,7 @@ function publish(){
 
    
    var fbId = window.location.href.split('.com/');
-   fbId = parseInt(fbId[1]);
+   fbId = fbId[1];
    function updateUserInfo(response) {
      FB.api('/me', function(response) {
       response1 = response;
